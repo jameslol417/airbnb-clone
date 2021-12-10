@@ -8,8 +8,8 @@ class Review(core_models.TimeStampedModel):
     """Review Model Definition"""
 
     review = models.TextField()
-    cleanliness = models.IntegerField()
     accuracy = models.IntegerField()
+    cleanliness = models.IntegerField()
     communication = models.IntegerField()
     location = models.IntegerField()
     check_in = models.IntegerField()

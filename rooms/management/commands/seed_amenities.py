@@ -3,6 +3,9 @@ from rooms.models import Amenity
 
 
 class Command(BaseCommand):
+
+    help = "This command creates amenities"
+
     def add_arguments(self, parser):
         parser.add_argument(
             "--seed",
@@ -57,7 +60,9 @@ class Command(BaseCommand):
             "Towels",
             "TV",
         ]
+        n = 0
         for a in amenities:
             if not Amenity.objects.filter(name=a):  # 중복체크
+                n += 1
                 Amenity.objects.create(name=a)
-        self.stdout.write(self.style.SUCCESS("Amenities created!"))
+        self.stdout.write(self.style.SUCCESS(f"{n} amenities created!"))
