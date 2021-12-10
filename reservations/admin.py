@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils import timezone
 from . import models
 import reservations
 
@@ -14,14 +15,14 @@ class ProgressListFilter(admin.SimpleListFilter):
         )
 
     def queryset(self, request, queryset):
-        created = str(models.Reservation.created)
+        now = timezone.now().date()
         if self.value() == "True":
-            return queryset.exclude(created__contains=created)
+            return queryset.filter(check_in__lt=now, check_out__gt=now)
         elif self.value() == "False":
-            return queryset.filter(created__contains=created)
+            return queryset.exclude(check_in__lt=now, check_out__gt=now)
 
 
-class FinishedListFilter(admin.SimpleListFilter):
+class FinishedListFilter(admin.SimpleListFilter, admin.ModelAdmin):
     title = "Is Finished"  # 필터에 By .... 에 들어갈 녀석을 적음
     parameter_name = "is_finished"  # 필터링할 녀석
 
@@ -32,11 +33,11 @@ class FinishedListFilter(admin.SimpleListFilter):
         )
 
     def queryset(self, request, queryset):
-        created = str(models.Reservation.created)
+        now = timezone.now().date()
         if self.value() == "True":
-            return queryset.filter(created__contains=created)
+            return queryset.filter(check_out__lt=now)
         elif self.value() == "False":
-            return queryset.exclude(created__contains=created)
+            return queryset.exclude(check_out__lt=now)
 
 
 @admin.register(models.Reservation)
