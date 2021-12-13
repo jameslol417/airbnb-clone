@@ -33,7 +33,7 @@ class Command(BaseCommand):
             {
                 "name": lambda x: seeder.faker.company(),
                 "address": lambda x: seeder.faker.address(),
-                "price": lambda x: random.randint(0, 10000),
+                "price": lambda x: random.randint(0, 4000),
                 "guests": lambda x: random.randint(1, 40),
                 "beds": lambda x: random.randint(1, 40),
                 "bedrooms": lambda x: random.randint(1, 20),
