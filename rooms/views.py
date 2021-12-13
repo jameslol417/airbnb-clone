@@ -10,6 +10,7 @@ from django.http import Http404
 from django.views.generic import ListView  # , DetailView -> CBV
 
 # --------------Class Based View---------------------
+from django_countries import countries
 from . import models
 
 
@@ -53,3 +54,28 @@ def room_detail(request, pk):
 
 
 # --------------CBV----------------
+
+
+def search(request):
+    city = request.GET.get("city", "Anywhere")
+    city = str.capitalize(city)
+    room_types = models.RoomType.objects.all()
+    country = request.GET.get("country", "KR")
+    room_type = int(request.GET.get("room_type", 0))
+
+    form = {
+        "city": city,
+        "s_country": country,
+        "s_room_type": room_type,
+    }
+
+    choices = {
+        "countries": countries,
+        "room_types": room_types,
+    }
+
+    return render(
+        request,
+        "rooms/search.html",
+        {**form, **choices},
+    )
