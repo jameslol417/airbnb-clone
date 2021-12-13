@@ -1,12 +1,15 @@
-from django.shortcuts import redirect, render
-
-# from django.urls import reverse
+from django.shortcuts import render  # ,redirect
 from django.http import Http404
 
+# DetailView FBV
+
 # from django.core.paginator import EmptyPage, Paginator
-# Function Based View
-from django.utils import timezone
-from django.views.generic import ListView
+
+# HomeView FBV
+# -------------Function Based View------------------
+from django.views.generic import ListView  # , DetailView -> CBV
+
+# --------------Class Based View---------------------
 from . import models
 
 
@@ -32,12 +35,6 @@ class HomeView(ListView):
     ordering = "created"
     context_object_name = "rooms"
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        now = timezone.now()
-        context["now"] = now
-        return context
-
 
 def room_detail(request, pk):
     try:
@@ -46,3 +43,13 @@ def room_detail(request, pk):
     except models.Room.DoesNotExist:
         # return redirect(reverse("core:home"))
         raise Http404()
+
+
+# class RoomDetail(DetailView):
+
+#     """RoomDetail Definition"""
+
+#     model = models.Room
+
+
+# --------------CBV----------------
