@@ -6,8 +6,6 @@ Home
 
 {% block content %}
 
-{{now}}
-
 {% for room in rooms %}
 <h3>
     <a href="{% url "rooms:detail" room.pk %}">{{room.name}} / ${{room.price}}</a>
