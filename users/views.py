@@ -1,9 +1,10 @@
 import os
 import requests
-from django.views import View
+
+# from django.views import View
 from django.views.generic import FormView  # generic login use import, use CCBV
 from django.urls import reverse_lazy  # simpler reverse
-from django.shortcuts import render, redirect, reverse  # added for login
+from django.shortcuts import redirect, reverse  # added for login / +render for manual
 from django.contrib.auth import authenticate, login, logout
 from . import forms, models
 
@@ -118,7 +119,7 @@ def github_callback(request):
                     },
                 )
                 profile_json = profile_request.json()
-                print(profile_json)
+                # print(profile_json) > debugging received github profile data
                 username = profile_json.get("login", None)
                 if username is not None:
                     name = profile_json.get("name")
