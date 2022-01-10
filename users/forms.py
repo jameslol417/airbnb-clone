@@ -1,5 +1,7 @@
 from django import forms
 from django.db.models.fields import EmailField
+
+# from django.contrib.auth.forms import UserCreationForm
 from . import models
 
 
@@ -47,8 +49,10 @@ class SignUpForm(forms.ModelForm):  # using ModelForm
         model = models.User
         fields = ("first_name", "last_name", "email")
 
-    password = forms.CharField(widget=forms.PasswordInput)
-    password1 = forms.CharField(widget=forms.PasswordInput, label="Confirm Password")
+        password = forms.CharField(widget=forms.PasswordInput)
+        password1 = forms.CharField(
+            widget=forms.PasswordInput, label="Confirm Password"
+        )
 
     def clean_password1(self):
         password = self.cleaned_data.get("password")
@@ -103,3 +107,8 @@ class SignUpForm(forms.ModelForm):  # using ModelForm
 #         user.first_name = first_name
 #         user.last_name = last_name
 #         user.save()
+
+
+# class SignUpForm(UserCreationForm): #using UserCreationForm
+
+#     username = forms.EmailField(label="Email")

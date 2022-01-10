@@ -33,7 +33,10 @@ class CustomUserAdmin(UserAdmin):
         ),
     )
 
-    list_filter = UserAdmin.list_filter + ("superhost",)
+    list_filter = UserAdmin.list_filter + (
+        "superhost",
+        "login_method",
+    )
 
     list_display = (
         "username",
