@@ -34,7 +34,6 @@ class LoginView(FormView):
     template_name = "users/login.html"
     form_class = forms.LoginForm
     success_url = reverse_lazy("core:home")
-    initial = {"email": "jtex417@naver.com"}
 
     def form_valid(self, form):
         if form.is_valid():

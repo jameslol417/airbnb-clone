@@ -102,6 +102,9 @@ class Room(core_models.TimeStampedModel):
         self.city = self.city.title()
         super().save(*args, **kwargs)  # Call the real save() method
 
+    def num_reviews(self):
+        return len(self.reviews.all())
+
     def total_rating(self):
         try:
             all_reviews = self.reviews.all()
@@ -111,3 +114,7 @@ class Room(core_models.TimeStampedModel):
             return round(all_ratings / len(all_reviews), 2)
         except ZeroDivisionError:
             return 0
+
+    def first_photo(self):
+        (photo,) = self.photos.all()[:1]
+        return photo.file.url

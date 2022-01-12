@@ -32,7 +32,7 @@ class HomeView(ListView):
     """HomeView Definition"""
 
     model = models.Room
-    paginate_by = 10
+    paginate_by = 12
     paginate_orphans = 5
     ordering = "created"
     context_object_name = "rooms"
@@ -74,7 +74,7 @@ def search(request):
             bedrooms = form.cleaned_data.get("bedrooms")
             beds = form.cleaned_data.get("beds")
             baths = form.cleaned_data.get("baths")
-            instant_book = form.cleaned_data.get("intsant_book")
+            instant_book = form.cleaned_data.get("instant_book")
             superhost = form.cleaned_data.get("superhost")
             amenities = form.cleaned_data.get("amenities")
             facilities = form.cleaned_data.get("facilities")
