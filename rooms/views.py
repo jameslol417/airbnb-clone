@@ -41,7 +41,7 @@ class HomeView(ListView):
 def room_detail(request, pk):
     try:
         room = models.Room.objects.get(pk=pk)
-        return render(request, "rooms/detail.html", {"room": room})
+        return render(request, "rooms/room_detail.html", {"room": room})
     except models.Room.DoesNotExist:
         # return redirect(reverse("core:home"))
         raise Http404()
@@ -59,8 +59,9 @@ def room_detail(request, pk):
 
 def search(request):
 
+    # city = request.GET.get("city")
+    # if city:
     country = request.GET.get("country")
-
     if country:
 
         form = forms.SearchForm(request.GET)
@@ -82,9 +83,10 @@ def search(request):
             filter_args = {}
 
             if city != "Anywhere":
-                filter_args["city__startswith"] = city
+                filter_args["city__istartswith"] = city
 
-            filter_args["country"] = country
+            if country is not None:
+                filter_args["country"] = country
 
             if room_type is not None:
                 filter_args["room_type"] = room_type
