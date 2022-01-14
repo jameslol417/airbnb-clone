@@ -7,6 +7,7 @@ from django.views.generic import (
     DetailView,
     UpdateView,
 )  # generic login use import, use CCBV
+from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse_lazy  # simpler reverse
 from django.shortcuts import redirect, reverse  # added for login / +render for manual
 from django.contrib.auth import authenticate, login, logout
@@ -259,9 +260,9 @@ class UpdateUserView(UpdateView):
     model = models.User
     template_name = "users/update-profile.html"
     fields = {
+        # "email",
         "first_name",
         "last_name",
-        "avatar",
         "gender",
         "bio",
         "language",
@@ -270,3 +271,13 @@ class UpdateUserView(UpdateView):
 
     def get_object(self, queryset=None):
         return self.request.user
+
+    # def form_valid(self, form): #to change username along email
+    #     email = form.cleaned_data.get("email")
+    #     self.object.username = email
+    #     self.object.save()
+    #     return super().form_valid(form)
+
+
+class UpdatePasswordView(PasswordChangeView):
+    template_name = "users/update-password.html"
