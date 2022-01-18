@@ -155,3 +155,8 @@ EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_KEY")  # past the key or password ap
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = "default from email"
+
+
+# Auth
+
+LOGIN_URL = "/users/login"
