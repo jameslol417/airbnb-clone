@@ -40,7 +40,7 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-THIRD_PARTY_APPS = ["django_countries", "django_seed", "send_gmail"]
+THIRD_PARTY_APPS = ["django_countries", "django_seed"]
 
 PROJECT_APPS = [
     "core.apps.CoreConfig",
@@ -52,7 +52,7 @@ PROJECT_APPS = [
     "conversations.apps.ConversationsConfig",
 ]
 
-INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS
+INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -160,3 +160,7 @@ DEFAULT_FROM_EMAIL = "default from email"
 # Auth
 
 LOGIN_URL = "/users/login"
+
+# Locale
+
+# LOCALE_PATHS = (BASE_DIR / "locale",)

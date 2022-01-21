@@ -1,9 +1,12 @@
+from django.utils import timezone
+from dateutil import relativedelta
 from django.contrib.admin.decorators import register
 from django.db import models
 from django.urls import reverse
 from django.db.models.fields import BLANK_CHOICE_DASH
 from django_countries.fields import CountryField
 from core import models as core_models
+from cal import Calendar
 
 
 class AbstractItem(core_models.TimeStampedModel):
@@ -116,9 +119,19 @@ class Room(core_models.TimeStampedModel):
             return 0
 
     def first_photo(self):
-        (photo,) = self.photos.all()[:1]
-        return photo.file.url
+        try:
+            (photo,) = self.photos.all()[:1]
+            return photo.file.url
+        except ValueError:
+            return None
 
     def get_next_four_photos(self):
         photos = self.photos.all()[1:5]
         return photos
+
+    def get_calendars(self):
+        today = timezone.localtime(timezone.now()).date()
+        nextmonth = today + relativedelta.relativedelta(months=1)
+        this_month = Calendar(today.year, today.month)
+        next_month = Calendar(nextmonth.year, nextmonth.month)
+        return [this_month, next_month]

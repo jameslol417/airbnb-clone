@@ -1,4 +1,4 @@
-from re import template
+from re import L, template
 from django.http import Http404
 
 # from django.core import paginator
@@ -13,6 +13,7 @@ from django.contrib import messages
 # HomeView FBV
 # -------------Function Based View------------------
 from django.views.generic import (
+    View,
     ListView,
     UpdateView,
     DetailView,
@@ -225,6 +226,23 @@ def delete_photo(request, room_pk, photo_pk):
         return redirect(reverse("core:home"))
 
 
+@login_required
+def delete_confirm(request, room_pk, photo_pk):
+    user = request.user
+    try:
+        room = models.Room.objects.get(pk=room_pk)
+        photo = models.Photo.objects.get(pk=photo_pk)
+        if room.host.pk != user.pk:
+            messages.error(request, "Can't delete that photo")
+        return render(
+            request,
+            "rooms/delete_confirm.html",
+            {"room_pk": room_pk, "photo_pk": photo_pk, "photo": photo},
+        )
+    except models.Room.DoesNotExist:
+        return redirect(reverse("core:home"))
+
+
 class EditPhotoView(user_mixins.LoggedInOnlyView, SuccessMessageMixin, UpdateView):
 
     model = models.Photo
@@ -252,3 +270,16 @@ class AddPhotoView(
         form.save(pk)
         messages.success(self.request, "Photo Uploaded")
         return redirect(reverse("rooms:photos", kwargs={"pk": pk}))
+
+
+class CreateRoomView(user_mixins.LoggedInOnlyView, FormView):
+    form_class = forms.CreateRoomForm
+    template_name = "rooms/room_create.html"
+
+    def form_valid(self, form):
+        room = form.save()
+        room.host = self.request.user
+        room.save()
+        form.save_m2m()
+        messages.success(self.request, "Room Uploaded")
+        return redirect(reverse("rooms:detail", kwargs={"pk": room.pk}))

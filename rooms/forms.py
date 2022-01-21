@@ -1,3 +1,4 @@
+from ipaddress import v4_int_to_packed
 from typing_extensions import Required
 from django import forms
 from django.forms import widgets
@@ -42,3 +43,31 @@ class CreatePhotoForm(forms.ModelForm):
         room = models.Room.objects.get(pk=pk)
         photo.room = room
         photo.save()
+
+
+class CreateRoomForm(forms.ModelForm):
+    class Meta:
+        model = models.Room
+        fields = (
+            "name",
+            "description",
+            "country",
+            "city",
+            "price",
+            "address",
+            "guests",
+            "beds",
+            "bedrooms",
+            "baths",
+            "check_in",
+            "check_out",
+            "instant_book",
+            "room_type",
+            "amenities",
+            "facilities",
+            "house_rules",
+        )
+
+    def save(self, *args, **kwargs):
+        room = super().save(commit=False)
+        return room
