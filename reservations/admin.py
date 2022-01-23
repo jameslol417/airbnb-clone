@@ -1,7 +1,6 @@
 from django.contrib import admin
 from django.utils import timezone
 from . import models
-import reservations
 
 
 class ProgressListFilter(admin.SimpleListFilter):
@@ -46,6 +45,7 @@ class ReservationAdmin(admin.ModelAdmin):
     """Reservation Admin Definition"""
 
     list_display = (
+        "__str__",
         "room",
         "status",
         "check_in",

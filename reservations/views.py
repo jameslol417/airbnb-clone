@@ -28,6 +28,7 @@ def create(request, room, year, month, day):
             check_in=date_obj,
             check_out=date_obj + datetime.timedelta(days=1),
         )  # need to implement method to fix check_out
+        # print(reservation.pk) > returns None, db.sqlite3 also is not updated
         return redirect(reverse("reservations:detail", kwargs={"pk": reservation.pk}))
 
 

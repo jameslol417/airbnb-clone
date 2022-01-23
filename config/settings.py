@@ -163,4 +163,4 @@ LOGIN_URL = "/users/login"
 
 # Locale
 
-# LOCALE_PATHS = (BASE_DIR / "locale",)
+LOCALE_PATHS = (BASE_DIR / "locale",)

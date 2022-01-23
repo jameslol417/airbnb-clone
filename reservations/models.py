@@ -14,7 +14,7 @@ class BookedDay(core_models.TimeStampedModel):
         verbose_name_plural = "Booked Days"
 
     def __str__(self):
-        return self.day
+        return str(self.day)
 
 
 class Reservation(core_models.TimeStampedModel):
@@ -34,7 +34,7 @@ class Reservation(core_models.TimeStampedModel):
     status = models.CharField(
         max_length=12, choices=STATUS_CHOICES, default=STATUS_PENDING
     )
-    check_in = models.DateField()
+    check_in = models.DateField(default="")
     check_out = models.DateField()
     guest = models.ForeignKey(
         "users.User", related_name="reservations", on_delete=models.CASCADE
@@ -74,6 +74,6 @@ class Reservation(core_models.TimeStampedModel):
                 for i in range(difference.days + 1):
                     day = start + datetime.timedelta(days=i)
                     BookedDay.objects.create(day=day, reservation=self)
-
+                return
         else:  # do not bother with old reservations
             return super().save(*args, **kwargs)
