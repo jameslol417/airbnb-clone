@@ -1,5 +1,6 @@
 from django import forms
 from django.db.models.fields import EmailField
+from django.utils.translation import gettext_lazy as _
 
 # from django.contrib.auth.forms import UserCreationForm
 from . import models
@@ -7,9 +8,9 @@ from . import models
 
 class LoginForm(forms.Form):
 
-    email = forms.EmailField(widget=forms.EmailInput(attrs={"placeholder": "Email"}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={"placeholder": _("Email")}))
     password = forms.CharField(
-        widget=forms.PasswordInput(attrs={"placeholder": "Password"})
+        widget=forms.PasswordInput(attrs={"placeholder": _("Password")})
     )
 
     # def clean_email(self):
@@ -41,9 +42,11 @@ class LoginForm(forms.Form):
             if user.check_password(password):
                 return self.cleaned_data
             else:
-                self.add_error("password", forms.ValidationError("Password is wrong"))
+                self.add_error(
+                    "password", forms.ValidationError(_("Password is wrong"))
+                )
         except models.User.DoesNotExist:
-            self.add_error("email", forms.ValidationError("User does not exist"))
+            self.add_error("email", forms.ValidationError(_("User does not exist")))
 
 
 class SignUpForm(forms.ModelForm):  # using ModelForm
@@ -52,16 +55,16 @@ class SignUpForm(forms.ModelForm):  # using ModelForm
         fields = ("first_name", "last_name", "email")
 
         widgets = {
-            "first_name": forms.TextInput(attrs={"placeholder": "First Name"}),
-            "last_name": forms.TextInput(attrs={"placeholder": "Last Name"}),
-            "email": forms.EmailInput(attrs={"placeholder": "Email Name"}),
+            "first_name": forms.TextInput(attrs={"placeholder": _("First Name")}),
+            "last_name": forms.TextInput(attrs={"placeholder": _("Last Name")}),
+            "email": forms.EmailInput(attrs={"placeholder": _("Email Name")}),
         }
 
     password = forms.CharField(
-        widget=forms.PasswordInput(attrs={"placeholder": "Password"})
+        widget=forms.PasswordInput(attrs={"placeholder": _("Password")})
     )
     password1 = forms.CharField(
-        widget=forms.PasswordInput(attrs={"placeholder": "Confirm Password"})
+        widget=forms.PasswordInput(attrs={"placeholder": _("Confirm Password")})
     )
 
     def clean_password1(self):
@@ -69,7 +72,7 @@ class SignUpForm(forms.ModelForm):  # using ModelForm
         password1 = self.cleaned_data.get("password1")
 
         if password != password1:
-            raise forms.ValidationError("Password confirmation does not match")
+            raise forms.ValidationError(_("Password confirmation does not match"))
         else:
             return password
 
@@ -86,7 +89,7 @@ class SignUpForm(forms.ModelForm):  # using ModelForm
         try:
             models.User.objects.get(email=email)
             raise forms.ValidationError(
-                "That email is already taken", code="existing_user"
+                _("That email is already taken"), code="existing_user"
             )
         except models.User.DoesNotExist:
             return email

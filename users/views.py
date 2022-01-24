@@ -1,5 +1,9 @@
 import os
 import requests
+from config import settings
+from django.utils import translation
+from django.utils.translation import gettext_lazy as _
+from django.http import HttpResponse
 
 # from django.views import View
 from django.views.generic import (
@@ -276,7 +280,7 @@ class UpdateProfileView(mixins.LoggedInOnlyView, SuccessMessageMixin, UpdateView
         "language",
         "currency",
     )
-    success_message = "Profile Update"
+    success_message = _("Profile Update")
 
     def get_object(self, queryset=None):
         return self.request.user
@@ -289,9 +293,9 @@ class UpdateProfileView(mixins.LoggedInOnlyView, SuccessMessageMixin, UpdateView
 
     def get_form(self, form_class=None):
         form = super().get_form(form_class=form_class)
-        form.fields["first_name"].widget.attrs = {"placeholder": "First Name"}
-        form.fields["last_name"].widget.attrs = {"placeholder": "Last Name"}
-        form.fields["bio"].widget.attrs = {"placeholder": "Bio"}
+        form.fields["first_name"].widget.attrs = {"placeholder": _("First Name")}
+        form.fields["last_name"].widget.attrs = {"placeholder": _("Last Name")}
+        form.fields["bio"].widget.attrs = {"placeholder": _("Bio")}
         return form
 
 
@@ -302,14 +306,16 @@ class UpdatePasswordView(
     PasswordChangeView,
 ):
     template_name = "users/update-password.html"
-    success_message = "Password Updated"
+    success_message = _("Password Updated")
 
     def get_form(self, form_class=None):
         form = super().get_form(form_class=form_class)
-        form.fields["old_password"].widget.attrs = {"placeholder": "Current Password"}
-        form.fields["new_password1"].widget.attrs = {"placeholder": "New Password"}
+        form.fields["old_password"].widget.attrs = {
+            "placeholder": _("Current Password")
+        }
+        form.fields["new_password1"].widget.attrs = {"placeholder": _("New Password")}
         form.fields["new_password2"].widget.attrs = {
-            "placeholder": "Confirm New Password"
+            "placeholder": _("Confirm New Password")
         }
         return form
 
@@ -324,3 +330,12 @@ def switch_hosting(request):
     except KeyError:
         request.session["is_hosting"] = True
     return redirect(reverse("core:home"))
+
+
+def switch_language(request):
+    lang = request.GET.get("lang", None)
+    if lang is not None:
+        translation.activate(lang)
+    response = HttpResponse(200)
+    response.set_cookie(settings.LANGUAGE_COOKIE_NAME, lang)
+    return response

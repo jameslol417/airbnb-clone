@@ -1,5 +1,6 @@
 import imp
 from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
 from datetime import datetime
 import calendar
 
@@ -20,20 +21,28 @@ class Calendar(calendar.Calendar):
         super().__init__(firstweekday=6)
         self.year = year
         self.month = month
-        self.day_names = ("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat")
+        self.day_names = (
+            _("Sun"),
+            _("Mon"),
+            _("Tue"),
+            _("Wed"),
+            _("Thu"),
+            _("Fri"),
+            _("Sat"),
+        )
         self.months = (
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-            "October",
-            "November",
-            "December",
+            _("January"),
+            _("February"),
+            _("March"),
+            _("April"),
+            _("May"),
+            _("June"),
+            _("July"),
+            _("August"),
+            _("September"),
+            _("October"),
+            _("November"),
+            _("December"),
         )
 
     def get_days(self):

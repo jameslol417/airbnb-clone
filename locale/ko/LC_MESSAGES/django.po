@@ -1,0 +1,406 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-24 14:52+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: cal.py:25
+msgid "Sun"
+msgstr "일"
+
+#: cal.py:26
+msgid "Mon"
+msgstr "월"
+
+#: cal.py:27
+msgid "Tue"
+msgstr "화"
+
+#: cal.py:28
+msgid "Wed"
+msgstr "수"
+
+#: cal.py:29
+msgid "Thu"
+msgstr "목"
+
+#: cal.py:30
+msgid "Fri"
+msgstr "금"
+
+#: cal.py:31
+msgid "Sat"
+msgstr "토"
+
+#: cal.py:34
+msgid "January"
+msgstr "1월"
+
+#: cal.py:35
+msgid "February"
+msgstr "2월"
+
+#: cal.py:36
+msgid "March"
+msgstr "3월"
+
+#: cal.py:37
+msgid "April"
+msgstr "4월"
+
+#: cal.py:38
+msgid "May"
+msgstr "5월"
+
+#: cal.py:39
+msgid "June"
+msgstr "6월"
+
+#: cal.py:40
+msgid "July"
+msgstr "7월"
+
+#: cal.py:41
+msgid "August"
+msgstr "8월"
+
+#: cal.py:42
+msgid "September"
+msgstr "9월"
+
+#: cal.py:43
+msgid "October"
+msgstr "10월"
+
+#: cal.py:44
+msgid "November"
+msgstr "11월"
+
+#: cal.py:45
+msgid "December"
+msgstr "12월"
+
+#: reservations/models.py:14
+msgid "Booked Day"
+msgstr "예약된 날"
+
+#: reservations/models.py:15
+msgid "Booked Days"
+msgstr "예약된 날들"
+
+#: reservations/models.py:30
+msgid "Pending"
+msgstr "대기중"
+
+#: reservations/models.py:31
+msgid "Confirmed"
+msgstr "확인됨"
+
+#: reservations/models.py:32
+msgid "Cancelled"
+msgstr "취소됨"
+
+#: rooms/models.py:39 templates/rooms/room_detail.html:50
+msgid "Amenities"
+msgstr "편의시설들"
+
+#: rooms/models.py:47 templates/rooms/room_detail.html:56
+msgid "Facilities"
+msgstr "시설들"
+
+#: rooms/models.py:55
+msgid "House Rule"
+msgstr "집 규칙"
+
+#: templates/404.html:5
+msgid "Not Found"
+msgstr "찾지 못함"
+
+#: templates/404.html:9
+msgid "Not Found 404"
+msgstr "찾지 못함 404"
+
+#: templates/base.html:27
+msgid "Search by City"
+msgstr "도시로 검색"
+
+#: templates/emails/verify_email.html:2
+msgid "Verify Email"
+msgstr "이메일을 인증하시오"
+
+#: templates/emails/verify_email.html:3
+#, python-format
+msgid "Hello %(first_name)s %(last_name)s, to verify your email click"
+msgstr ""
+"안녕하세요, %(first_name)s %(last_name)s. 인증하기 위해 링크를 누르세요."
+
+#: templates/emails/verify_email.html:5
+msgid "here"
+msgstr "링크"
+
+#: templates/mixins/room_card.html:12
+msgid "superhost"
+msgstr "슈퍼호스트"
+
+#: templates/partials/footer.html:4
+msgid "A Mock Website"
+msgstr "모의 웹사이트"
+
+#: templates/partials/nav.html:7
+msgid "Stop Hosting"
+msgstr "호스트 정지"
+
+#: templates/partials/nav.html:9
+msgid "Start Hosting"
+msgstr "호스트 시작"
+
+#: templates/partials/nav.html:14
+msgid "Create Room"
+msgstr "방 만들기"
+
+#: templates/partials/nav.html:16
+msgid "Profile"
+msgstr "프로필"
+
+#: templates/partials/nav.html:17
+msgid "Log out"
+msgstr "로그아웃"
+
+#: templates/partials/nav.html:19
+msgid "Log in"
+msgstr "로그인"
+
+#: templates/partials/nav.html:21
+msgid "Sign Up"
+msgstr "회원가입"
+
+#: templates/partials/social_login.html:4
+msgid "Continue with Github"
+msgstr "깃헙으로 계속하기"
+
+#: templates/partials/social_login.html:7
+msgid "Continue with Kakao"
+msgstr "카카오톡으로 계속하기"
+
+#: templates/partials/social_login.html:15
+msgid "or"
+msgstr "또는"
+
+#: templates/reservations/detail.html:5
+msgid "Reservation"
+msgstr "예약"
+
+#: templates/reservations/detail.html:34
+msgid "Contact Your Airbnb Host"
+msgstr "당신의 Airbnb 호스트 연락"
+
+#: templates/reservations/detail.html:35
+msgid "Send a Message"
+msgstr "메세지 보내기"
+
+#: templates/reservations/detail.html:43
+msgid "Write Your Review"
+msgstr "후기 작성하기"
+
+#: templates/reservations/detail.html:47
+msgid "Submit Review"
+msgstr "후기 제출하기"
+
+#: templates/reservations/detail.html:52
+msgid "Cancel Reservation"
+msgstr "예약 취소"
+
+#: templates/reservations/detail.html:55
+msgid "Confirm Reservation"
+msgstr "예약 확인"
+
+#: templates/rooms/delete_confirm.html:5 templates/rooms/delete_confirm.html:20
+msgid "Confirm Delete?"
+msgstr "삭제 확인"
+
+#: templates/rooms/delete_confirm.html:26
+msgid "Back to edit photo"
+msgstr "사진 편접으로 돌아가기"
+
+#: templates/rooms/photo_create.html:5
+msgid "Upload Photo"
+msgstr "사진 업로드"
+
+#: templates/rooms/room_detail.html:62
+msgid "House Rules"
+msgstr "집 규칙들"
+
+#: templates/rooms/room_detail.html:68
+msgid "Reviews"
+msgstr "후기들"
+
+#: templates/rooms/room_list.html:30
+#, python-format
+msgid "Page %(current_page)s of %(total_pages)s"
+msgstr "페이지 %(current_page)s 의 %(total_pages)s"
+
+#: templates/users/update-password.html:5
+#: templates/users/update-password.html:18
+#| msgid "New Password"
+msgid "Update Password"
+msgstr "비밀번호 업데이트"
+
+#: templates/users/update-profile.html:5 templates/users/update-profile.html:16
+msgid "Update Profile"
+msgstr "프로필 업데이트"
+
+#: templates/users/update-profile.html:20
+msgid "Change Password"
+msgstr "비밀번호 변경"
+
+#: templates/users/user_detail.html:5 templates/users/user_detail.html:32
+msgid "'s Profile"
+msgstr "의 프로필"
+
+#: templates/users/user_detail.html:26
+msgid "Edit Profile"
+msgstr "프로필 편점"
+
+#: users/forms.py:11
+msgid "Email"
+msgstr "이메일"
+
+#: users/forms.py:13 users/forms.py:64
+msgid "Password"
+msgstr "비밀번호"
+
+#: users/forms.py:46
+msgid "Password is wrong"
+msgstr "비밀번호가 틀렸습니다"
+
+#: users/forms.py:49
+msgid "User does not exist"
+msgstr "사용자가 존재하지 않습니다"
+
+#: users/forms.py:58 users/views.py:296
+msgid "First Name"
+msgstr "이름"
+
+#: users/forms.py:59 users/views.py:297
+msgid "Last Name"
+msgstr "성"
+
+#: users/forms.py:60
+msgid "Email Name"
+msgstr "이메일"
+
+#: users/forms.py:67
+msgid "Confirm Password"
+msgstr "비밀번호 재입력"
+
+#: users/forms.py:75
+msgid "Password confirmation does not match"
+msgstr "비밀번호가 일치하지 않습니다"
+
+#: users/forms.py:92
+msgid "That email is already taken"
+msgstr "이미 사용되는 이메일입니다"
+
+#: users/mixins.py:13 users/mixins.py:25
+msgid "Can't go there"
+msgstr "접근 불가"
+
+#: users/mixins.py:19
+msgid "Page not found"
+msgstr "찾지 못함"
+
+#: users/models.py:21
+msgid "Male"
+msgstr "남성"
+
+#: users/models.py:22
+msgid "Female"
+msgstr "여성"
+
+#: users/models.py:23
+msgid "Other"
+msgstr "기타"
+
+#: users/models.py:30
+msgid "English"
+msgstr "영어"
+
+#: users/models.py:31
+msgid "Korean"
+msgstr "한국어"
+
+#: users/models.py:51
+msgid "gender"
+msgstr "성별"
+
+#: users/models.py:53
+msgid "bio"
+msgstr "프로필"
+
+#: users/models.py:56
+msgid "language"
+msgstr "언어"
+
+#: users/models.py:88
+msgid "Verify Airbnb Account"
+msgstr "Airbnb 계정을 인증하시오"
+
+#: users/views.py:283
+msgid "Profile Update"
+msgstr "프로필이 업데이트되었습니다"
+
+#: users/views.py:298
+#, fuzzy
+#| msgid "bio"
+msgid "Bio"
+msgstr "프로필"
+
+#: users/views.py:309
+msgid "Password Updated"
+msgstr "비밀번호가 업데이트되었습니다."
+
+#: users/views.py:314
+msgid "Current Password"
+msgstr "현재 비밀번호"
+
+#: users/views.py:316
+msgid "New Password"
+msgstr "새 비밀번호"
+
+#: users/views.py:318
+msgid "Confirm New Password"
+msgstr "새 비밀번호 재입력"
+
+#, fuzzy
+#~| msgid "First Name"
+#~ msgid "first_name"
+#~ msgstr "이름"
+
+#~ msgid "bed"
+#~ msgstr "침대"
+
+#~ msgid "s"
+#~ msgstr "들"
+
+#~ msgid "bedroom"
+#~ msgstr "침실"
+
+#~ msgid "bath"
+#~ msgstr "욕실"
+
+#~ msgid "guest"
+#~ msgstr "명"

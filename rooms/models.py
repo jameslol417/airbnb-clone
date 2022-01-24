@@ -1,3 +1,4 @@
+from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 from dateutil import relativedelta
 from django.contrib.admin.decorators import register
@@ -35,7 +36,7 @@ class Amenity(AbstractItem):
     """Amenity Model Definition"""
 
     class Meta:
-        verbose_name_plural = "Amenities"
+        verbose_name_plural = _("Amenities")
 
 
 class Facility(AbstractItem):
@@ -43,7 +44,7 @@ class Facility(AbstractItem):
     """Facility Model Definition"""
 
     class Meta:
-        verbose_name_plural = "Facilities"
+        verbose_name_plural = _("Facilities")
 
 
 class HouseRule(AbstractItem):
@@ -51,7 +52,7 @@ class HouseRule(AbstractItem):
     """Facility Model Definition"""
 
     class Meta:
-        verbose_name = "House Rule"
+        verbose_name = _("House Rule")
 
 
 class Photo(core_models.TimeStampedModel):
